@@ -1,11 +1,15 @@
 <script>
 import Navbar from '~/components/Navbar/Navbar'
 import NavbarBottom from '~/components/NavbarBottom/NavbarBottom'
+import CommentList from '~/components/CommentList/CommentList'
+import Details from '~/components/Details/Details'
 
 export default {
   components: {
     Navbar,
-    NavbarBottom
+    NavbarBottom,
+    CommentList,
+    Details
   },
   mounted() {
     $('[data-toggle="tooltip"]').tooltip({trigger : 'hover'});

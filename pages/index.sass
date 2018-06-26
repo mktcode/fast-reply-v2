@@ -45,3 +45,36 @@ a:focus,
 
 .modal-body .user .profile-link
   text-decoration: none
+
+#content
+  width: 200%
+  height: 100%
+  background: #eee
+  padding: 56px 0
+  transition: margin-left .3s ease
+
+#content.show-left
+  margin-left: 0
+
+#content.show-right
+  margin-left: -100%
+
+@media (min-width: 768px)
+  #content
+    width: 100%
+
+  #content.show-right
+    margin-left: 0
+
+@media (max-width: 575px)
+  .tooltip
+    display: none
+
+  .nav-item.dropdown
+    position: static
+
+  .nav-item .dropdown-menu
+    width: 100%
+    border: 0
+    border-radius: 0
+    margin-top: 0
