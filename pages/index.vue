@@ -6,6 +6,10 @@ export default {
   components: {
     Navbar,
     NavbarBottom
+  },
+  mounted() {
+    $('[data-toggle="tooltip"]').tooltip({trigger : 'hover'});
+    $('.filter-menuitem').tooltip({trigger : 'hover'});
   }
 }
 </script>
