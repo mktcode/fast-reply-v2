@@ -1,9 +1,11 @@
 <script>
 import Navbar from '~/components/Navbar/Navbar'
+import NavbarBottom from '~/components/NavbarBottom/NavbarBottom'
 
 export default {
   components: {
-    Navbar
+    Navbar,
+    NavbarBottom
   }
 }
 </script>
