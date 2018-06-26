@@ -1,26 +1,21 @@
-.navbar-dark .navbar-nav .nav-link
-  position: relative
-  color: rgba(255, 255, 255, .9)
+.navbar-dark
+  .navbar-nav .nav-link
+    position: relative
+    color: rgba(255, 255, 255, .9)
 
-.navbar-dark .navbar-text
-  color: rgba(255, 255, 255, .9)
-
-.badge-overlap
-  position: absolute
-  top: 0
-  right: 0
-  font-size: .7rem
-  padding: 3px 6px
+  .navbar-text
+    color: rgba(255, 255, 255, .9)
 
 .main-menuitem:after
   display: none
 
 @media (max-width: 575px)
-  .nav-item.dropdown
-    position: static
+  .nav-item
+    &.dropdown
+      position: static
 
-  .nav-item .dropdown-menu
-    width: 100%
-    border: 0
-    border-radius: 0
-    margin-top: 0
+    .dropdown-menu
+      width: 100%
+      border: 0
+      border-radius: 0
+      margin-top: 0
