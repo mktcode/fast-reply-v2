@@ -59,22 +59,7 @@
   <hr class="mb-0">
   <!-- Vote Form -->
   <div class="text-center vote-form py-4">
-    <small class="text-muted">Adjust the weight of your vote.</small>
-    <ul class="pagination justify-content-center">
-      <li class="page-item"><a class="page-link vote-controls vote-min" href="#"><i class="far fa-flag text-danger"></i></a></li>
-      <li class="page-item"><a class="page-link vote-controls vote-m10" href="#">-10</a></li>
-      <li class="page-item"><a class="page-link vote-controls vote-m1" href="#">-1</a></li>
-      <li class="page-item vote-weight">
-        <input type="number" value="100" min="-100" max="100" class="form-control vote-input" />
-      </li>
-      <li class="page-item"><a class="page-link vote-controls vote-p1" href="#">+1</a></li>
-      <li class="page-item"><a class="page-link vote-controls vote-p10" href="#">+10</a></li>
-      <li class="page-item"><a class="page-link vote-controls vote-max" href="#"><i class="far fa-thumbs-up text-success"></i></a></li>
-    </ul>
-
-    <button type="submit" class="btn btn-info vote-submit">
-      <i class="fas fa-thumbs-up"></i> <span>Upvote</span>
-    </button>
+    <VoteControl />
   </div>
   <hr class="my-0">
   <!-- Reply Form -->
