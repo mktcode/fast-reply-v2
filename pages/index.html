@@ -2,7 +2,7 @@
   <Navbar />
   <NavbarBottom />
 
-  <div id="content" class="show-left">
+  <div id="content" :class="'show-' + $store.state.visibleSide">
     <CommentList />
     <Details />
   </div>
