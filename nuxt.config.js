@@ -41,6 +41,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/vue-ls'
   ],
 
   /*
@@ -53,6 +54,8 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    vendor: ['vue-ls'],
+
     /*
     ** You can extend webpack config here
     */
