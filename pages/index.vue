@@ -10,10 +10,8 @@ export default {
   async fetch ({ app, store, redirect }) {
     const accessToken = app.ls.get('access_token')
     if (accessToken) {
-      sc2api.setAccessToken(accessToken)
-      store.state.user = await sc2api.me().catch(err => console.log(err))
-    }
-    if (!store.state.user) {
+      return store.dispatch('login', accessToken)
+    } else {
       return redirect('/login')
     }
   },
