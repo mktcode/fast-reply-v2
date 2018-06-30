@@ -1,4 +1,5 @@
 import axios from 'axios'
+import steem from 'steem'
 import { sc2api } from './sc2'
 
 export default {
@@ -11,6 +12,7 @@ export default {
         else {
           commit('login', user);
           await dispatch('updateComments')
+          await dispatch('updateVP')
           if (state.comments.length) {
             await commit('selectComment', state.comments[0].id)
           }
@@ -40,5 +42,17 @@ export default {
         await commit('selectComment', state.comments[0].id)
       }
     }
-  }
+  },
+  updateVP ({ commit, state }) {
+    if (state.user) {
+      steem.api.getAccounts([state.user.account.name], function (err, response) {
+        if (!err) {
+          let secondsago = (new Date() - new Date(response[0].last_vote_time + 'Z')) / 1000
+          let vpow = response[0].voting_power + (10000 * secondsago / 432000)
+          vpow = Math.min(vpow / 100, 100).toFixed(2)
+          commit('updateVP', vpow)
+        }
+      })
+    }
+  },
 }

@@ -22,8 +22,16 @@ export default {
     Details
   },
   mounted() {
+    // enable tooltips
     $('[data-toggle="tooltip"]').tooltip({trigger : 'hover'});
     $('.filter-menuitem').tooltip({trigger : 'hover'});
+
+    // start update/broadcast intervals
+    const SECOND = 1000
+
+    // refresh VP every minute
+    let vpTimer = setInterval(this.$store.dispatch, 60 * SECOND, 'updateVP')
+    this.$store.commit('timer', {name: 'updateVP', value: vpTimer})
   }
 }
 </script>

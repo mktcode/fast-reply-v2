@@ -19,6 +19,7 @@
     "nuxt": "^1.0.0",
     "sass-loader": "^7.0.3",
     "sc2-sdk": "^1.0.2",
+    "steem": "^0.7.1",
     "vue-ls": "^3.1.0"
   },
   "devDependencies": {

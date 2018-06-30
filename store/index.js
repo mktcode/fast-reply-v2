@@ -13,7 +13,8 @@ const createStore = () => {
       user: null,
       vp: null,
       comments: [],
-      activeComment: null
+      activeComment: null,
+      timers: {}
     },
     getters,
     mutations,

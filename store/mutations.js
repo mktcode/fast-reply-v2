@@ -17,5 +17,20 @@ export default {
   },
   selectComment (state, commentId) {
     state.activeComment = state.comments[state.comments.findIndex(comment => comment.id === commentId)]
+  },
+  timer (state, timer) {
+    // remove previous interval, if set
+    if (state.timers[timer]) {
+      clearInterval(state.timers[timer.name])
+      state.timers[timer] = null
+    }
+
+    // add new timer
+    if (timer.value) {
+      state.timers[timer.name] = timer.value
+    }
+  },
+  updateVP (state, vp) {
+    state.vp = vp
   }
 }
