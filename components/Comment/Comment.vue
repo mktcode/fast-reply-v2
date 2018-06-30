@@ -1,13 +1,8 @@
 <script>
   import marked from 'marked'
 
-  import VoteControl from '~/components/VoteControl/VoteControl'
-
   export default {
     props: ['comment'],
-    components: {
-      VoteControl
-    },
     computed: {
       date () {
         let date = new Date(this.comment.created)
@@ -15,7 +10,15 @@
         return date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear() + ' - ' + date.getHours() + ':' + (minutes < 10 ? '0' + minutes : minutes)
       },
       body () {
-        return marked(this.comment.body)
+        let html = marked(this.comment.body)
+
+        let regex = /(<([^>]+)>)/ig
+        let preview = html.replace(regex, '')
+
+        return preview.slice(0, 200)
+      },
+      activeClass () {
+        return this.comment === this.$store.state.activeComment ? 'active' : ''
       }
     }
   }

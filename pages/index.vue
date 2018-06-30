@@ -10,7 +10,7 @@ export default {
   async fetch ({ app, store, redirect }) {
     const accessToken = app.ls.get('access_token')
     if (accessToken) {
-      return store.dispatch('login', accessToken)
+      await store.dispatch('login', accessToken)
     } else {
       return redirect('/login')
     }

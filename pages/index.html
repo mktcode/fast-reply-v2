@@ -4,6 +4,6 @@
 
   <div id="content" :class="'show-' + $store.state.visibleSide">
     <CommentList />
-    <Details />
+    <Details :comment="$store.state.activeComment" />
   </div>
 </div>

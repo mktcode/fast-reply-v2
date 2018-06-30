@@ -1,14 +1,14 @@
-<div id="details">
+<div id="details" v-if="comment">
   <div class="comment-header clearfix">
     <!-- User -->
     <div class="float-left user">
-      <div class="comment-profile-image" style="background-image: url('https://steemitimages.com/u/utopian-io/avatar/small');"></div>
+      <div class="comment-profile-image" :style="{ backgroundImage: 'url(https://steemitimages.com/u/' + comment.author + '/avatar/small)' }"></div>
       <div class="mt-1 float-left">
-        <a href="https://steemit.com/@utopian-io" class="profile-link" target="_blank">
-          @utopian-io
-          <span class="badge badge-secondary">69</span><br>
+        <a :href="'https://steemit.com/@' + comment.author" class="profile-link" target="_blank">
+          @{{ comment.author }}
+          <span class="badge badge-secondary">{{ comment.reputation.toFixed(0) }}</span><br>
         </a>
-        <small class="text-muted">6/12/2018 20:24</small>
+        <small class="text-muted">{{ date }}</small>
       </div>
     </div>
     <!-- Follow/Mute/Ignore Buttons -->
@@ -35,25 +35,14 @@
     </button>
   </div>
   <!-- Comment -->
-  <h5 class="px-3 pt-3 pb-0">Re: The Magic Frog: Wallet Integration And More (Development Update)</h5>
-  <p class="px-3 pb-3 pt-2">
-    Hey @mkt<br>
-    <b>Thanks for contributing on Utopian.</b><br>
-    We’re already looking forward to your next contribution!<br>
-    <br>
-    <b>Contributing on Utopian</b><br>
-    Learn how to contribute on our website or by watching this tutorial on Youtube.<br>
-    <br>
-    <b>Want to chat? Join us on Discord <a href="#">https://discord.gg/h52nFrV</a></b>.<br>
-    <br>
-    <a href="#">Vote for Utopian Witness!</a>
-  </p>
+  <h5 class="px-3 pt-3 pb-0">Re: {{ comment.rootTitle }}</h5>
+  <p class="px-3 pb-3 pt-2" v-html="body"></p>
   <!-- Steemit/Busy Links, Votes/Reward-->
   <small class="p-3">
     <i class="fas fa-external-link-alt text-muted"></i>
-    <a href="https://steemit.com" target="_blank" class="text-muted">steemit.com</a>
+    <a :href="'https://steemit.com' + comment.url" target="_blank" class="text-muted">steemit.com</a>
     -
-    <a href="https://busy.org" target="_blank" class="text-muted">busy.org</a>
+    <a :href="'https://busy.org' + comment.url" target="_blank" class="text-muted">busy.org</a>
     <span class="text-muted float-right mr-3">6 votes, $3.68</span>
   </small>
   <hr class="mb-0">
@@ -109,4 +98,7 @@
       </button>
     </div>
   </div>
+</div>
+<div v-else>
+  Select a comment!
 </div>
