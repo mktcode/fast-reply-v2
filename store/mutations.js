@@ -1,3 +1,8 @@
+import Vue from 'vue'
+import VueStorage from 'vue-ls'
+
+Vue.use(VueStorage)
+
 export default {
   goLeft (state) {
     state.visibleSide = 'left'
@@ -32,5 +37,34 @@ export default {
   },
   updateVP (state, vp) {
     state.vp = vp
+  },
+  /** Managing pending actions **/
+  addPendingAction (state, action) {
+    state.pending.push(action)
+    Vue.ls.set('pending', state.pending)
+  },
+  deletePendingAction (state, action) {
+    state.pending = state.pending.filter(a => a !== action)
+    Vue.ls.set('pending', state.pending)
+  },
+  failedAttempt (state, action) {
+    // Search for action in state
+    let failedAction = state.pending.find(item => item === action)
+    if (failedAction) {
+      // if found, increase attempts counter
+      failedAction.attempts++
+    }
+  },
+  isSchedulerRunning (state, value) {
+    state.isSchedulerRunning = value
+    Vue.ls.set('running', state.isSchedulerRunning)
+  },
+  failedAttempt (state, action) {
+    // Search for action in state
+    let failedAction = state.pending.find(item => item === action)
+    if (failedAction) {
+      // if found, increase attempts counter
+      failedAction.attempts++
+    }
   }
 }

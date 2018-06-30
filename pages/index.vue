@@ -32,6 +32,10 @@ export default {
     // refresh VP every minute
     let vpTimer = setInterval(this.$store.dispatch, 60 * SECOND, 'updateVP')
     this.$store.commit('timer', {name: 'updateVP', value: vpTimer})
+
+    // execute a pending vote every 5 seconds
+    let voteTimer = setInterval(this.$store.dispatch, 5 * SECOND, 'executeNextPendingActionOfType', 'vote')
+    this.$store.commit('timer', {name: 'executeNextPendingVote', value: voteTimer})
   }
 }
 </script>
